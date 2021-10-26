@@ -13,7 +13,7 @@ class QuizBrain:
         correct_answer = self.question_list[self.question_number][1]
         # current_score = self.score
         current_number += 1
-        user_answer = input(f"Q.{current_number}:\n{current_question} Type --> True / False. Score: {self.score}/{self.question_number}").lower()
+        user_answer = input(f"Q.{current_number}:\n{current_question} Type 't'(True) or 'f'(False). Score: {self.score}/{self.question_number}\n").lower()
         self.question_number += 1
         self.check_answer(user_answer, correct_answer)
 
@@ -21,6 +21,10 @@ class QuizBrain:
         """Check answer and updates score."""
         self.user_answer = user_answer
         self.correct_answer = correct_answer
+        if user_answer.lower() == "t":
+        	user_answer = "true"
+        elif user_answer.lower() == "f":
+          user_answer = "false"
         if user_answer.lower() == correct_answer.lower():
             self.score += 1
             print("You got it right.")
